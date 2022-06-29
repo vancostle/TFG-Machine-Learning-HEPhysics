@@ -252,3 +252,55 @@ plt.xlabel('Actual class')
 plt.show()
 
 plt.savefig(path + 'XGB-LHCb-Matrix-spine.pgf',bbox_inches='tight')
+
+############ Predicting the decay on a 4800 and 5800 MeV
+
+mas_pred_1, mas_pred_2, mas_test = [], [], mas_test_array[:,0].tolist()
+
+for i in range(0,len(predictions)):
+    if pred_prob[i,1] >= 0.97:
+        mas_pred_1.append(mas_test[i])
+    if pred_prob[i,1] >= 0.999:
+        mas_pred_2.append(mas_test[i])
+
+matplotlib.use("pgf")
+matplotlib.rcParams.update({
+    "pgf.texsystem": "pdflatex",
+    'font.family': 'serif',
+    'text.usetex': True,
+    'pgf.rcfonts': False,
+})
+
+fig, ax = plt.subplots(1,1,figsize=(2.45,2.1))
+# fig, ax = plt.subplots(1,1,figsize=(3,1.45))
+#plt.title('Background')
+plt.title('XGBoost')
+plt.minorticks_on()
+#ax.hist(mas_test, bins=70, facecolor='lightgray', edgecolor='#474746', histtype='stepfilled', align='mid', alpha=1, label='bkg')
+ax.hist(mas_pred_1, bins=70, facecolor='lightgray', edgecolor='#474746', histtype='stepfilled', align='mid', alpha=1, label='0.97')
+ax.hist(mas_pred_2, bins=70, facecolor='lightgray', edgecolor='#474746', align='mid', alpha=1, label='0.999')
+ax.legend(loc='upper center',prop={'size':9},fancybox=True, framealpha=0.2)
+
+# lines for compile signal
+plt.ylim([0, 20])
+plt.xlim([4900, 5800])      # slip
+ax.set_xticks([5000,5300,5600])
+ax.set_yticks([0,5,10,15,20])
+
+# lines for compile bkg
+# plt.xlim([3900, 6000])
+# ax.set_xticks([4200,4600,5000,5400,5800])
+# plt.ylim([0, 105])
+# ax.set_yticks([0,25,50,75,100])
+
+plt.xlabel('Mass (MeV)')
+plt.tight_layout()
+plt.show()
+
+path = 'C:/Users/vanes/OneDrive - Universitat de Barcelona/8e semestre/TFG/TeX/Memoria/figures/'
+
+plt.savefig(path+'XGB-LambdaMass-slip.pgf',bbox_inches='tight')
+plt.savefig(path+'bkg.pgf',bbox_inches='tight')
+# plt.savefig('C:/Users/vanes/OneDrive - Universitat de Barcelona/8e semestre/TFG/TeX/Presentació/figures-catala/bkg.pgf',bbox_inches='tight')
+
+# That's all folks
