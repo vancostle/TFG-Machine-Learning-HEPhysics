@@ -291,3 +291,5 @@ plt.show()
 
 path = 'C:/Users/vanes/OneDrive - Universitat de Barcelona/8e semestre/TFG/TeX/Memoria/figures/'
 plt.savefig(path+'TF-LambdaMass.pgf',bbox_inches='tight')
+
+# That's all folks
