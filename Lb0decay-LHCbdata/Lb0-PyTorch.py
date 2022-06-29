@@ -3,7 +3,7 @@ import uproot as ut
 import pandas as pd
 import numpy as np  
 
-torch.manual_seed(10000)                               # https://pytorch.org/docs/stable/notes/randomness.html
+torch.manual_seed(1000)                               # https://pytorch.org/docs/stable/notes/randomness.html
 from torch import nn
 from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
@@ -351,5 +351,35 @@ plt.xlabel('Actual class')
 
 plt.savefig(path + 'PT-LHCb-Matrix.pgf',bbox_inches='tight')
 
+############ Predinting the decay on a 4800 and 5800 MeV
+
+mas_pred_1, mas_pred_2, mas_test = [], [], mas_test_array[:,0].tolist()
+
+plt.style.use('classic')
+%matplotlib inline
+
+for i in range(0,len(predictions)):
+    if pred_prob[i] >= 0.98:
+        mas_pred_1.append(mas_test[i])
+    if pred_prob[i] >= 0.99:          # mass_2 is only a larger threshold
+        mas_pred_2.append(mas_test[i])
+
+fig, ax = plt.subplots(1,1,figsize=(2.45,2.1))
+# fig, ax = plt.subplots(1,1,figsize=(3.4,2))
+plt.title('PyTorch')
+plt.minorticks_on()
+ax.hist(mas_pred_1, bins=70, facecolor='lightgray', edgecolor='#474746', histtype='stepfilled', align='mid', alpha=1, label='0.98')
+# ax.hist(mas_pred_2, bins=70, facecolor='lightgray', edgecolor='#474746', align='mid', alpha=1, label='0.99')       
+ax.legend(loc='upper left',prop={'size':9},fancybox=True, framealpha=0.2)               
+plt.xlim([4900, 5800])    
+ax.set_xticks([5000,5300,5600])
+plt.ylim([0, 13])          
+# ax.set_yticks([0,5,10])
+plt.xlabel('Mass (MeV)')
+plt.tight_layout()
+plt.show()
+
+path = 'C:/Users/vanes/OneDrive - Universitat de Barcelona/8e semestre/TFG/TeX/Memoria/figures/'
+plt.savefig(path+'PT-LambdaMass.pgf',bbox_inches='tight')
 
 # That's all folks
