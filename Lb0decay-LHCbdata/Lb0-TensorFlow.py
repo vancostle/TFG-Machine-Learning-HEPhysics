@@ -263,3 +263,31 @@ plt.ylabel('Predicted class')
 plt.xlabel('Actual class')
 
 plt.savefig(path + 'TF-LHCb-Matrix.pgf',bbox_inches='tight')
+
+############ Predinting the decay on a 4800 and 5800 MeV
+
+mas_pred_1, mas_pred_2, mas_test = [], [], mas_test_array[:,0].tolist()
+
+for i in range(0,len(predictions)):
+    if pred_prob[i,1] >= 0.68:
+        mas_pred_1.append(mas_test[i])
+    if pred_prob[i,1] >= 0.999:       # mass2 is only a higher threshold
+        mas_pred_2.append(mas_test[i])
+
+fig, ax = plt.subplots(1,1,figsize=(2.45,2.1))
+# fig, ax = plt.subplots(1,1,figsize=(3.4,2))
+plt.title('TensorFlow')
+plt.minorticks_on()
+ax.hist(mas_pred_1, bins=70, facecolor='lightgray', edgecolor='#474746', histtype='stepfilled', align='mid', alpha=1, label='0.68')
+# ax.hist(mas_pred_2, bins=70, facecolor='lightgray', edgecolor='#474746', align='mid', alpha=1, label='0.999')
+plt.legend(prop={'size':9},fancybox=True, framealpha=0.2)               
+plt.xlim([4900, 5800])     
+ax.set_xticks([5000,5300,5600])
+plt.ylim([0, 40])           
+# ax.set_yticks([0,5,10])
+plt.xlabel('Mass (MeV)')
+plt.tight_layout()
+plt.show()
+
+path = 'C:/Users/vanes/OneDrive - Universitat de Barcelona/8e semestre/TFG/TeX/Memoria/figures/'
+plt.savefig(path+'TF-LambdaMass.pgf',bbox_inches='tight')
