@@ -4,7 +4,7 @@ this aids to someone I would be really happy and proud. Here, it is studied two 
 
 This code contains two problems: whether the Lb0 decay to p,K,ee, from LHCb data, and one simulation of a banc problem (whether a person subscribes to a term deposit). The first one is the <strong>MAIN</strong> problem and the second one is only a personal trainment as a begginer in this gorgeous field of ML, were the data was extrated from a webpage mentioned below.
 
-The aim is to study the models of PyTorch, TensorFlow and XGBoost (from Python) extracted of the documentation of each library and see how they perfom in each problem. Results and discusion and conclusion and beautiful-vectorial figures are on the pdf.
+The aim is to study the models of PyTorch, TensorFlow and XGBoost (from Python) extracted of the documentation of each library and see how they perfom in each problem. Results, discusion, conclusion and beautiful-vectorial figures are on the pdf.
 
 # Lb0 decay, from LHCb data
 Lb0 ~ 5620 MeV of invariant mass.
