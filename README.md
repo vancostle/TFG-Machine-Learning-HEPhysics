@@ -2,7 +2,7 @@
 The purpose of this repostery is to gather the code I have been developed lasts four months (as a final degree project in Physics, UB), for future students. If 
 this aids to someone I would be really happy and proud. Here, it is studied two ML algorithms: Neural Netwoks (from PyTorch and TensorFlow) and the algorithm of Boosted Decision Trees on XGBoost's implementation.
 
-This code contains two problems: whether the Lb0 decay to p,K,ee, from LHCb data, and one simulation of a banc problem (whether a person subscribes to a term deposit). The first one is the <strong>MAIN</strong> problem and the second one is only a personal trainment as a begginer in this gorgeous field of ML, were the data was extrated from a webpage mentioned in the README.
+This code contains two problems: whether the Lb0 decay to p,K,ee, from LHCb data, and one simulation of a banc problem (whether a person subscribes to a term deposit). The first one is the <strong>MAIN</strong> problem and the second one is only a personal trainment as a begginer in this gorgeous field of ML, were the data was extrated from a webpage mentioned above.
 
 The aim is to study the models of PyTorch, TensorFlow and XGBoost (from Python) extracted of the documentation of each library and see how they perfom in each problem. Results and discusion and conclusion and beautiful-vectorial figures are on the pdf.
 
