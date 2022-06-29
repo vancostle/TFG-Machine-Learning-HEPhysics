@@ -171,3 +171,5 @@ with open('PT-Bank-Pred_prob-array.txt', 'w') as f:
     for item in pred_prob:
         f.write("%s\n" % item)
 f.close
+
+# That's all folks
