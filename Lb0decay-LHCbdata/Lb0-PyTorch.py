@@ -94,6 +94,10 @@ bkg_he = bkg_he[bkg_he["IPCHI2_pK"] > 0]
 bkg_df = bkg_df[bkg_df["IPCHI2_min_pK"] > 0]
 bkg_he = bkg_he[bkg_he["IPCHI2_min_pK"] > 0]
 
+# saving the mass for prediction plot
+mas_test = bkg_df[['Lb_M']]
+mas_test_array = mas_test.to_numpy()
+
 # now deleting the last column
 del sig_df['Lb_M']
 del bkg_df['Lb_M']
