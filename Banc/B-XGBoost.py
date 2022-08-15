@@ -32,6 +32,8 @@ print("Accuracy of Model::",accuracy_score(y_test,predictions))  # accuracy of t
 
 ############### Saving data and don't need to compile all this everytime you need to make a change in the figures
 
+actual = pd.Series(y_test).values
+
 with open('XGB-Bank-Actual-array.txt', 'w') as f:
     for item in actual:
         f.write("%s\n" % item)
