@@ -100,26 +100,24 @@ del bkg_he['Lb_M']
 sig_array = sig_df.to_numpy()
 bkg_array = bkg_df.to_numpy()
 bhe_array = bkg_he.to_numpy()
-mas_test_array = mas_test.to_numpy()
 
 print("Signal shape:", sig_array.shape)
 print("Backgr shape:", bkg_array.shape)
 print("Bck HE shape:", bhe_array.shape)
 
 # merge and define signal and background labels
-X_train = np.concatenate((sig_array[:1177], bhe_array))
-X_test = bkg_array
-y_train = np.concatenate((np.ones(sig_array[:1177].shape[0]),     # 1 is signal
+X = np.concatenate((sig_array[:1177], bhe_array))
+y = np.concatenate((np.ones(sig_array[:1177].shape[0]),     # 1 is signal
                     np.zeros(bhe_array[:1177].shape[0])))  # 0 is background
 
-print("X shape:", X_train.shape)
-print("X shape:", X_test.shape)
-print("y shape:", y_train.shape)
+print("X shape:", X.shape)
+print("y shape:", y.shape)
 
-X_train = pd.DataFrame(X_train)
-y_train = pd.DataFrame(y_train)
-X_test = pd.DataFrame(X_test)
+X = pd.DataFrame(X)
+y = pd.DataFrame(y)
 
+# split data in train and test samples
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5)
 print("Train size:", X_train.shape[0])
 print("Test size: ", X_test.shape[0])
 
